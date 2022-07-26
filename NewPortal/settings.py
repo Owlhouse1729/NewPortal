@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-adq=ie#zr09vm0233g%mch+)diqdaucc90t15cuj+_s-+!9g65'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -142,8 +142,8 @@ AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = 'accounts:top'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'tkmn@tkmail.com'
+# メール設定
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # メール送信しますよ
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = 'media/'

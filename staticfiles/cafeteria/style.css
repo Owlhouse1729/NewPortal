@@ -1,5 +1,6 @@
 .haikei {
     background-image: url("/cafeteria/static/cafeteria/R.jpg");
+    background: #cccccc;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
