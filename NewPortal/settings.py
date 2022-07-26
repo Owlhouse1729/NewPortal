@@ -79,8 +79,8 @@ WSGI_APPLICATION = 'NewPortal.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-#if DEBUG:
-if False:
+
+if DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -168,8 +168,3 @@ if not DEBUG:
         'default': dj_database_url.config(),
     }
     django_heroku.settings(locals())
-
-DATABASES = {
-        'default': dj_database_url.config(),
-    }
-django_heroku.settings(locals())
