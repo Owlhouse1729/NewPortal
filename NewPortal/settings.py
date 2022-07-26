@@ -13,7 +13,6 @@ import os.path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -156,6 +155,7 @@ PUBLIC_PATHS = [
 if not DEBUG:
     import os
     import django_heroku
+    import dj_database_url
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -163,8 +163,9 @@ if not DEBUG:
     MIDDLEWARE += [
         'whitenoise.middleware.WhiteNoiseMiddleware',
     ]
-
+    db_from_env = dj_database_url.config()
     DATABASES = {
         'default': dj_database_url.config(),
     }
+    ALLOWED_HOSTS = ['*']
     django_heroku.settings(locals())
