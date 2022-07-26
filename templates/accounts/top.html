@@ -1,0 +1,56 @@
+{%  extends "accounts/accounts_base.html" %}
+{% block sub-content %}
+<div class="haikei vh=100 d-flex align-items-center">
+    <div class="container">
+      <div class="row col-8 mx-auto text-center">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">学食予約</h4>
+                <p class="card-text">大学食堂の予約が行なえます。予約にはチケットが必要で、各ユーザーは毎週３枚を配布されます。</p>
+                <a href="{% url 'cafeteria:top' %}" class="btn btn-primary">予約ページへ</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">学内掲示板</h4>
+                <p class="card-text">学生のみが利用可能な掲示板です。課題の質問やサークル勧誘などの学生間の交流ができます。</p>
+                <a href="{% url 'social:top' %}" class="btn btn-primary">掲示板へ</a>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row col-8 mx-auto text-center pt-3">
+          <div class="col-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">WebClass</h5>
+                <p class="card-text">授業と課題の管理</p>
+                    <a href="https://webclass.tcu.ac.jp/" class="btn btn-primary">利用する</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">出席確認システム</h5>
+                <p class="card-text">授業の出席管理</p>
+                <a href="https://call.off.tcu.ac.jp/" class="btn btn-primary">利用する</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">ポータルサイト</h5>
+                <p class="card-text">大学公式のポータルサイト</p>
+                <a href="https://www.itc.tcu.ac.jp/service/portal/" class="btn btn-primary">利用する</a>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

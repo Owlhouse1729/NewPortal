@@ -1,0 +1,61 @@
+{% extends 'cafeteria/base.html' %}
+{% block sub-content %}
+<div class="text-center">
+    <div class="d-flex justify-content-center">
+        <div class="card col-8">
+          <h5 class="card-header">予約作成</h5>
+          <div class="card-body">
+            <h5 class="card-title">あなたの予約チケット数 {{ ticket }}枚</h5>
+            <h5 class="card-text">予約状況: {{ am_reserving }}</h5>
+            <p class="card-text">予約をする際にチケットを一枚消費します。チケットは毎週月曜日に３枚まで回復します。</p>
+            {% if am_reserving == 'すでに予約しています' %}
+                <a href="{% url 'cafeteria:check' %}" class="btn btn-primary">予約を取り消してチケットを戻す</a>
+            {% else %}
+                <a class="btn btn-secondary">予約なし</a>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center pt-3">
+        <div class="row col-8 px-0">
+          <div class="col-sm-6 px-0 pr-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">前半 (12:50~13:15)</h5>
+                <p class="card-text">現在の予約数 {{ reserve_count_first }} / {{ reserve_limit_first }}</p>
+                {% if am_reserving == 'すでに予約しています' %}
+                    <a class="btn btn-secondary">予約済み</a>
+                {% else %}
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="submit" name="first" value="予約する" class="btn btn-primary">
+                    </form>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 px-0 pl-2">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">後半 (13:15~13:40)</h5>
+                <p class="card-text">現在の予約数 {{ reserve_count_second }} / {{ reserve_limit_second }}</p>
+                {% if am_reserving == 'すでに予約しています' %}
+                    <a class="btn btn-secondary">予約済み</a>
+                {% else %}
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="submit" name="second" value="予約する" class="btn btn-primary">
+                    </form>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <form action="{% url 'cafeteria:top' %}" method="get" class="pt-3">
+        <input type="submit" class="btn btn-secondary" value="学食予約トップに戻る">
+    </form>
+</div>
+
+
+{% endblock %}

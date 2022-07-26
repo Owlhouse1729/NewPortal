@@ -1,0 +1,12 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'cafeteria/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="under-nav">
+        {% block sub-content %}{% endblock %}
+    </div>
+{% endblock %}

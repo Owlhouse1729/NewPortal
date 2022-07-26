@@ -1,0 +1,50 @@
+{% extends 'social/base.html' %}
+{% block navbar-list %}
+    {% for genre in genres %}
+        {% if genre == current_genre %}
+            <a class="nav-link active" href="{% url 'social:top' genre.genre_id %}">{{ genre.name }}</a>
+        {% else %}
+            <a class="nav-link" href="{% url 'social:top' genre.genre_id %}">{{ genre.name }}</a>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+{% block sub-content %}
+    <div class="container pb-5">
+    <h3>{{ thread.title }}</h3>
+    <h4>{{ thread.owner }} が {{ thread.date_created }} に作成</h4>
+    {% for post in posts %}
+        <div class="pt-2">
+        <div class="card">
+          <div class="card-header">
+              <h5>{{ post.author }} - {{ post.date_posted }}</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ post.content }}</p>
+          </div>
+        </div>
+        </div>
+    {% endfor %}
+    </div>
+    <div class="fixed-bottom px-5 pb-5 d-flex justify-content-end">
+        <div class="col-4">
+            <div class="card">
+              <div class="card-header">
+                  <h5>{{ user.email }}</h5>
+              </div>
+              <div class="card-body text-center">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <textarea name="content" class="form-control-lg col-12"></textarea>
+                    <input type="submit" class="btn btn-primary" value="送信">
+                </form>
+              </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+{% block navbar-submenu %}
+    <form action="{% url 'social:top' %}" method="get" class="d-flex px-2">
+      <button class="btn btn-secondary" type="submit">掲示板トップへ戻る</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'accounts/accounts_base.html' %}
+{% block sub-content %}
+    <div class="text-center">
+        <h1>ログアウトしました</h1>
+        <a href="{% url 'accounts:login' %}" class="btn btn-secondary">ログインページへ</a>
+    </div>
+{% endblock %}

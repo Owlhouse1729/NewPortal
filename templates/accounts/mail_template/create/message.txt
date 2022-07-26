@@ -1,0 +1,5 @@
+{{ user.email }} さん
+
+下のURLくりっくして登録を完了してね
+
+{{ protocol }}://{{ domain }}{% url 'accounts:user_create_complete' token %}

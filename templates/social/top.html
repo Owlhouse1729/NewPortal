@@ -1,0 +1,42 @@
+{% extends 'social/base.html' %}
+{% block navbar-list %}
+    {% for genre in genres %}
+        {% if genre == current_genre %}
+            <a class="nav-link active" href="{% url 'social:top' genre.genre_id %}">{{ genre.name }}</a>
+        {% else %}
+            <a class="nav-link" href="{% url 'social:top' genre.genre_id %}">{{ genre.name }}</a>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+{% block sub-content %}
+<div class="px-3">
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">タイトル</th>
+      <th scope="col">作成者</th>
+      <th scope="col">最終更新</th>
+      <th scope="col">返信数</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for thread in threads %}
+        <tr>
+            <td><a href="{% url 'social:view_posts' thread.pk %}">{{ thread.title }}</a></td>
+            <td>{{ thread.owner }}</td>
+            <td>{{ thread.last_update }}</td>
+            <td>{{ thread.replies }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
+{% block navbar-submenu %}
+    <form action="{% url 'social:create_thread' %}" method="get" class="d-flex px-2">
+        <button class="btn btn-success" type="submit">スレッド新規作成</button>
+    </form>
+    <form action="{% url 'accounts:top' %}" method="get" class="d-flex px-2">
+      <button class="btn btn-secondary" type="submit">トップへ戻る</button>
+    </form>
+{% endblock %}

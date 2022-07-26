@@ -1,0 +1,26 @@
+{% extends 'social/base.html' %}
+{% block navbar-list %}
+    {% for genre in genres %}
+        {% if genre == current_genre %}
+            <a class="nav-link active" href="{% url 'social:top' genre.genre_id %}">{{ genre.name }}</a>
+        {% else %}
+            <a class="nav-link" href="{% url 'social:top' genre.genre_id %}">{{ genre.name }}</a>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+{% block sub-content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="text-center">
+        <h4>{{ form.as_p }}</h4>
+    <input type="submit" class="btn btn-primary" value="新規作成">
+    </div>
+</form>
+
+{% endblock %}
+{% block navbar-submenu %}
+    <form action="{% url 'social:top' %}" method="get" class="d-flex px-2">
+      <button class="btn btn-secondary" type="submit">掲示板トップへ戻る</button>
+    </form>
+{% endblock %}
