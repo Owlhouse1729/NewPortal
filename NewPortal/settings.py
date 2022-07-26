@@ -149,6 +149,7 @@ PUBLIC_PATHS = [
     '/user_create/',
     '/user_create/done',
     '/user_create/complete',
+    '/admin',
 ]
 
 if not DEBUG:
